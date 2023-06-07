@@ -12,9 +12,15 @@ const DropDown: FC<DropDownProps> = ({ settings }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [search, setSearch] = useState('');
   const [variants, setVariants] = useState(settings.variants);
+  const [activeVar, setActiveVar] = useState('');
 
   function bttnHandler() {
     setIsOpen(!isOpen);
+  }
+
+  function selectVar(e: any) {
+    setActiveVar(e.target.innerText);
+    setIsOpen(false);
   }
 
   type HandlerType = (word: React.SetStateAction<string>) => void;
@@ -37,7 +43,8 @@ const DropDown: FC<DropDownProps> = ({ settings }) => {
     <div className="dd__wrap">
       <div className="dd__header">
         <button className="dd__active-var" onClick={() => bttnHandler()}>
-          <p>Оберіть ваше місто</p>
+          {activeVar ? <p className="dd__choosen">{activeVar}</p> : <p>Оберіть ваше місто</p>}
+
           <svg
             className={isOpen ? 'active' : ''}
             width="8"
@@ -56,10 +63,10 @@ const DropDown: FC<DropDownProps> = ({ settings }) => {
           <SearchInput search={search} searchHandler={searchHandler} />
           <ul className="dd__list">
             <li>
-              <button>Item 1</button>
+              <button onClick={(e) => selectVar(e)}>Item 1</button>
             </li>
             <li>
-              <button>Item 2</button>
+              <button onClick={(e) => selectVar(e)}>Item 2</button>
             </li>
             {variants.map((item) => (
               <ListItem
@@ -67,6 +74,7 @@ const DropDown: FC<DropDownProps> = ({ settings }) => {
                 value={item.text}
                 style={item.style ? item.style : {}}
                 customClass={item.customClass}
+                handler={selectVar}
               >
                 {item.customElement}
               </ListItem>
