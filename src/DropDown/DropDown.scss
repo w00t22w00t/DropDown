@@ -1,0 +1,97 @@
+
+
+button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none; // Just in case we missed anything.
+}
+
+ul {
+  list-style:none;
+}
+
+ul, li { /* reset the margin and padding */
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.dd {
+
+  &__wrap {
+    width: 29.5rem;
+    border: 1px solid #666666;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+
+  &__header {
+    padding: 1.2rem 1.6rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F9FAFB;
+    
+  }
+
+  &__active-var {
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    & p {
+      line-height: 125%;
+      color: #999999;
+    }
+
+    & svg.active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__body {
+    padding: 1rem 1rem 1.6rem;
+    background: #FFFFFF;
+    border-top: 1px solid #666666;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 8px 8px;
+  }
+
+  &__search {
+    padding: 0.4rem 0.8rem;
+    background: rgba(249, 250, 251, 0.6);
+    border: 1px solid rgba(209, 213, 219, 0.6);
+    border-radius: 0.6rem;
+  }
+
+  &__list {
+    margin-top: 1.2rem;
+    padding: 0 0.6rem;
+
+    & li {
+      color: #6B7280;
+
+      & button {
+        cursor: pointer;
+      }
+
+      &:not(:first-of-type) {
+        margin-top: 1.2rem;
+      }
+    }
+  }
+}
